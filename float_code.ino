@@ -9,7 +9,7 @@ const int lightsensorpin = 15;
 const int lightresistorohm = 10000; 
 const int thermistorpin = 26;
 const int thermistorresistorohm = 10000;
- 
+//-------------Commented out if running with esp32_wifi.ino----------------
 //void setup() {
 //    Serial.begin(9600);
 //}
