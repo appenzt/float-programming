@@ -89,9 +89,12 @@ const char UPDATE_PAGE[] PROGMEM = R"rawliteral(
 // Handler for the Root Page (Injects live ESP32 data into HTML placeholders)
 void handleRoot() {
     // Generate real-time data or fetch from sensors
-    String val1 = String(millis() / 1000) + " seconds";
-    String val2 = String(WiFi.RSSI());
-    String val3 = "Active & Running";
+    //String val1 = String(get_depth(), 2) + " m";
+    //String val2 = String(get_temp(), 2);
+    //String val3 = String(get_lux(), 2);
+    String val1 = String(rtc.getSecond() + "." + rtc.getMillis());
+    String val2 = "38";
+    String val3 = "50";
 
     // Read the PROGMEM HTML into a String
     String html = FPSTR(HTML_PAGE);
@@ -150,6 +153,7 @@ void handleUpdateUpload() {
 
 void setup() {
     Serial.begin(115200);
+    rtc.setTime(0);
     delay(1000);
 
     Serial.println("Configuring Access Point...");
